@@ -45,11 +45,15 @@ class MainWindow(tkinter.Frame):
     def zrob_krok(self):
         if self.waz.x != self.jedzonko.x or self.waz.y != self.jedzonko.y:
             self.przycisk_czysc["state"] = tkinter.DISABLED
+            self.przycisk_idz["state"] = tkinter.DISABLED
+            self.przycisk_losuj["state"] = tkinter.DISABLED
             self.waz.zrob_krok(self.jedzonko)
             self.narysuj_weza()
             self.after(20, self.zrob_krok)
         else:
             self.przycisk_czysc["state"] = tkinter.ACTIVE
+            self.przycisk_idz["state"] = tkinter.ACTIVE
+            self.przycisk_losuj["state"] = tkinter.ACTIVE
 
     def czysc_plansze(self):
         self.canvas.delete('all')

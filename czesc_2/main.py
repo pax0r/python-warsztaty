@@ -21,6 +21,8 @@ class MainWindow(tkinter.Frame):
         self.narysuj_weza()
         self.narysuj_jedzonko()
 
+        self.zrob_krok()
+
     def narysuj_weza(self):
         self.canvas.create_rectangle(self.waz.x, self.waz.y, self.waz.x, self.waz.y,
                                      outline='blue')
@@ -29,6 +31,12 @@ class MainWindow(tkinter.Frame):
         self.canvas.create_rectangle(self.jedzonko.x, self.jedzonko.y,
                                      self.jedzonko.x, self.jedzonko.y,
                                      outline='red')
+
+    def zrob_krok(self):
+        if self.waz.x != self.jedzonko.x or self.waz.y != self.jedzonko.y:
+            self.waz.zrob_krok(self.jedzonko)
+            self.narysuj_weza()
+            self.after(20, self.zrob_krok)
 
 
 if __name__ == '__main__':
